@@ -1,43 +1,52 @@
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { Calendar, MapPin, Users } from 'lucide-react';
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { Calendar, MapPin, Users } from "lucide-react";
 
 const destinations = [
   {
     id: 1,
-    title: 'Paris 1889',
-    subtitle: 'The Belle Époque',
-    description: 'Witness the unveiling of the Eiffel Tower at the Exposition Universelle. Experience the golden age of art, culture, and innovation.',
-    image: 'https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg?auto=compress&cs=tinysrgb&w=1920',
-    date: 'May 6-31, 1889',
-    location: 'Paris, France',
-    capacity: '12 travelers'
+    title: "Paris 1889",
+    subtitle: "The Belle Époque",
+    description:
+      "Witness the unveiling of the Eiffel Tower at the Exposition Universelle. Experience the golden age of art, culture, and innovation.",
+    image: "../../assets/paris.png",
+    date: "May 6-31, 1889",
+    location: "Paris, France",
+    capacity: "12 travelers",
   },
   {
     id: 2,
-    title: 'Crétacé',
-    subtitle: 'The Age of Giants',
-    description: 'Step into a world 66 million years ago. Observe magnificent dinosaurs in their natural habitat with our premium safety protocols.',
-    image: 'https://images.pexels.com/photos/12498089/pexels-photo-12498089.jpeg?auto=compress&cs=tinysrgb&w=1920',
-    date: '66 Million BCE',
-    location: 'Laurasia Supercontinent',
-    capacity: '8 travelers'
+    title: "Crétacé",
+    subtitle: "The Age of Giants",
+    description:
+      "Step into a world 66 million years ago. Observe magnificent dinosaurs in their natural habitat with our premium safety protocols.",
+    image: "../../assets/dino.png",
+    date: "66 Million BCE",
+    location: "Laurasia Supercontinent",
+    capacity: "8 travelers",
   },
   {
     id: 3,
-    title: 'Florence 1504',
-    subtitle: 'Renaissance Masterpiece',
-    description: 'Watch Leonardo da Vinci and Michelangelo at work. Immerse yourself in the creative revolution that shaped Western art forever.',
-    image: 'https://images.pexels.com/photos/2422497/pexels-photo-2422497.jpeg?auto=compress&cs=tinysrgb&w=1920',
-    date: 'October 1504',
-    location: 'Florence, Italy',
-    capacity: '10 travelers'
-  }
+    title: "Florence 1504",
+    subtitle: "Renaissance Masterpiece",
+    description:
+      "Watch Leonardo da Vinci and Michelangelo at work. Immerse yourself in the creative revolution that shaped Western art forever.",
+    image: "../../assets/autre.png",
+    date: "October 1504",
+    location: "Florence, Italy",
+    capacity: "10 travelers",
+  },
 ];
 
-function DestinationCard({ destination, index }: { destination: typeof destinations[0]; index: number }) {
+function DestinationCard({
+  destination,
+  index,
+}: {
+  destination: (typeof destinations)[0];
+  index: number;
+}) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
     <motion.div
@@ -68,11 +77,17 @@ function DestinationCard({ destination, index }: { destination: typeof destinati
 
         <div className="relative p-8">
           <div className="mb-4">
-            <h3 className="text-3xl font-bold text-amber-400 mb-2">{destination.title}</h3>
-            <p className="text-slate-400 text-sm tracking-wider uppercase">{destination.subtitle}</p>
+            <h3 className="text-3xl font-bold text-amber-400 mb-2">
+              {destination.title}
+            </h3>
+            <p className="text-slate-400 text-sm tracking-wider uppercase">
+              {destination.subtitle}
+            </p>
           </div>
 
-          <p className="text-slate-300 mb-6 leading-relaxed">{destination.description}</p>
+          <p className="text-slate-300 mb-6 leading-relaxed">
+            {destination.description}
+          </p>
 
           <div className="space-y-3 mb-6">
             <div className="flex items-center text-slate-400 text-sm">
@@ -115,7 +130,7 @@ function DestinationCard({ destination, index }: { destination: typeof destinati
 
 export default function Gallery() {
   const titleRef = useRef(null);
-  const isTitleInView = useInView(titleRef, { once: true, margin: '-100px' });
+  const isTitleInView = useInView(titleRef, { once: true, margin: "-100px" });
 
   return (
     <section className="relative py-32 px-6 bg-slate-950">
@@ -139,7 +154,11 @@ export default function Gallery() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {destinations.map((destination, index) => (
-            <DestinationCard key={destination.id} destination={destination} index={index} />
+            <DestinationCard
+              key={destination.id}
+              destination={destination}
+              index={index}
+            />
           ))}
         </div>
       </div>
